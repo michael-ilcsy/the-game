@@ -32,7 +32,7 @@
 
     public upperFields: UpperField[] = [
       new UpperField(new Card(1)),
-      new UpperField(new Card(1))
+      new UpperField(new Card(22))
     ]
   }
 </script>

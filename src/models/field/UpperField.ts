@@ -12,6 +12,10 @@ export default class UpperField extends BaseField {
   }
 
   public getFieldStatus(card: Card): FieldStatus {
+    if (card.number > 100) {
+      return FieldStatus.NG
+    }
+
     if ((this.topCard.number - 10) === card.number) {
       return FieldStatus.BACK
     }

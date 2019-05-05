@@ -21,7 +21,7 @@
     public cardNumbers: number[] = [1, 2, 12, 34, 45, 56, 82, 99];
 
     public cardSelect(number: number) {
-      console.log(number);
+      gameModule.SET_SELECTED_CARD(number)
     }
 
     get deck() {
