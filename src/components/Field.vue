@@ -1,11 +1,10 @@
 <template>
-  <div class="field" :class="classes">
+  <div class="field" :class="classes" @click="fieldClick">
     {{ field.topCardNumber }}
   </div>
 </template>
 
 <script lang="ts">
-
   import {Component, Prop, Vue} from "vue-property-decorator"
   import BaseField from "@/models/field/BaseField"
   import {gameModule} from "@/store/Game"
@@ -29,6 +28,14 @@
         OK: this.fieldStatus === FieldStatus.OK,
         Back: this.fieldStatus === FieldStatus.BACK
       }
+    }
+
+    public fieldClick() {
+      if (this.fieldStatus === FieldStatus.NG) {
+        return
+      }
+
+      this.field.putCard(this.selectedCard)
     }
   }
 </script>
