@@ -6,7 +6,7 @@
     </div>
     <div class="info-item -blue">
       このターン<br>
-      {{ cardCountInThisTurn }} 枚以上
+      {{ normaInThisTurn }} 枚以上
     </div>
     <div class="info-item">
       <button :disabled="canGoToNextTurn">次のターンへ</button>
@@ -24,12 +24,12 @@
       return gameModule.deck.remainingCount
     }
 
-    get cardCountInThisTurn() {
-      return 2
+    get normaInThisTurn() {
+      return gameModule.normaInThisTurn
     }
 
     get canGoToNextTurn() {
-      return this.cardCountInThisTurn > 0
+      return this.normaInThisTurn > 0
     }
   }
 </script>
