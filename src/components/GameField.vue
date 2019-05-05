@@ -1,12 +1,17 @@
 <template>
   <div>
-    <div class="lower">
-      <Field v-for="field in lowerFields" :field="field"></Field>
+    <div class="field-wrapper">
+      <div>
+        <div class="lower">
+          <Field v-for="field in lowerFields" :field="field"></Field>
+        </div>
+        <div class="upper">
+          <Field v-for="field in upperFields" :field="field"></Field>
+        </div>
+      </div>
+      <InfoField/>
     </div>
-    <div class="upper">
-      <Field v-for="field in upperFields" :field="field"></Field>
-    </div>
-    <Hand></Hand>
+    <Hand/>
   </div>
 </template>
 
@@ -17,11 +22,13 @@
   import Card from "@/models/Card"
   import UpperField from "@/models/field/UpperField"
   import Field from "@/components/Field.vue"
+  import InfoField from "@/components/InfoField.vue"
 
   @Component({
     components: {
       Hand,
-      Field
+      Field,
+      InfoField
     }
   })
   export default class GameField extends Vue {
@@ -38,6 +45,12 @@
 </script>
 
 <style scoped lang="scss">
+  .field-wrapper {
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+  }
+
   .lower, .upper {
     display: flex;
     margin-bottom: 2rem;
