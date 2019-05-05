@@ -16,7 +16,7 @@ export interface IGameState {
 
 @Module({dynamic: true, store, name: "game"})
 class Game extends VuexModule implements IGameState {
-  handCardNumbers: number[] = [1, 2, 12, 34, 45, 56, 82, 99]
+  handCardNumbers: number[] = []
   deck: Deck = new Deck()
   selectedCard: Card = new Card(1000)
   normaInThisTurn: number = 2
@@ -32,7 +32,7 @@ class Game extends VuexModule implements IGameState {
 
   @Mutation
   public SET_HAND_CARD_NUMBERS(numbers: number[]) {
-    this.handCardNumbers = numbers
+    this.handCardNumbers = numbers.sort((a, b) => a - b)
   }
 
   @Mutation
@@ -53,6 +53,17 @@ class Game extends VuexModule implements IGameState {
   @Action
   public initialize() {
     this.SET_DECK(new Deck())
+    
+    let hands: number[] = []
+    for (let i = 0; i < 8; i++) {
+      let card = this.deck.drawCard()
+      if (!card) {
+        continue
+      }
+      hands.push(card.number)
+    }
+
+    this.SET_HAND_CARD_NUMBERS(hands)
   }
 }
 

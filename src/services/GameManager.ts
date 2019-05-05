@@ -1,2 +1,9 @@
-//TODO: typescriptのコンパイルエラー時にvueのビルドにもエラー出したい
-//TODO: vuex-module-decoratorの使い方を調べる
+import {gameModule} from "@/store/Game";
+
+class GameManager {
+  public initialize() {
+    gameModule.initialize()
+  }
+}
+
+export const gameManager = new GameManager()
