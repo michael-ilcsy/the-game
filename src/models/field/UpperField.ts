@@ -6,7 +6,7 @@ import {FieldStatus} from "@/models/field/FieldStatus";
  * 上向きのカード置き場です
  */
 export default class UpperField extends BaseField {
-  constructor(protected card: Card) {
+  constructor(card: Card) {
     super(card)
     this.errorMessage = 'このカードは置けません'
   }

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Hand/>
+    <GameField/>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import Hand from "@/components/Hand.vue"
+  import GameField from "@/components/GameField.vue"
 
   @Component({
     components: {
-      Hand
+      GameField,
     },
   })
   export default class App extends Vue {
