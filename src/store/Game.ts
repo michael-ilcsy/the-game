@@ -2,18 +2,33 @@ import {Module, VuexModule, Mutation, getModule, Action} from "vuex-module-decor
 import store from "@/store/store"
 import Deck from '@/models/Deck';
 import Card from "@/models/Card";
+import LowerField from "@/models/field/LowerField";
+import UpperField from "@/models/field/UpperField";
 
 export interface IGameState {
   handCardNumbers: number[],
-  deck: Deck
+  deck: Deck,
+  selectedCard: Card,
+  normaInThisTurn: number,
+  lowerFields: LowerField[],
+  upperFields: UpperField[]
 }
 
 @Module({dynamic: true, store, name: "game"})
 class Game extends VuexModule implements IGameState {
-  handCardNumbers: number[] = []
+  handCardNumbers: number[] = [1, 2, 12, 34, 45, 56, 82, 99]
   deck: Deck = new Deck()
   selectedCard: Card = new Card(1000)
-  normaInThisTurn: number = 2;
+  normaInThisTurn: number = 2
+
+  lowerFields: LowerField[] = [
+    new LowerField(new Card(100)),
+    new LowerField(new Card(100)),
+  ]
+  upperFields: UpperField[] = [
+    new UpperField(new Card(1)),
+    new UpperField(new Card(22))
+  ]
 
   @Mutation
   public SET_HAND_CARD_NUMBERS(numbers: number[]) {

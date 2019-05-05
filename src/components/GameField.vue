@@ -23,6 +23,7 @@
   import UpperField from "@/models/field/UpperField"
   import Field from "@/components/Field.vue"
   import InfoField from "@/components/InfoField.vue"
+  import {gameModule} from "@/store/Game"
 
   @Component({
     components: {
@@ -32,15 +33,13 @@
     }
   })
   export default class GameField extends Vue {
-    public lowerFields: LowerField[] = [
-      new LowerField(new Card(100)),
-      new LowerField(new Card(100)),
-    ]
+    get lowerFields() {
+      return gameModule.lowerFields
+    }
 
-    public upperFields: UpperField[] = [
-      new UpperField(new Card(1)),
-      new UpperField(new Card(22))
-    ]
+    get upperFields() {
+      return gameModule.upperFields
+    }
   }
 </script>
 

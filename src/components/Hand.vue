@@ -18,14 +18,12 @@
     }
   })
   export default class Hand extends Vue {
-    public cardNumbers: number[] = [1, 2, 12, 34, 45, 56, 82, 99];
+    get cardNumbers() {
+      return gameModule.handCardNumbers
+    }
 
     public cardSelect(number: number) {
       gameModule.SET_SELECTED_CARD(number)
-    }
-
-    get deck() {
-      return gameModule.deck;
     }
   }
 </script>
