@@ -9,7 +9,7 @@
       あと {{ normaInThisTurn }} 枚以上
     </div>
     <div class="info-item">
-      <button :disabled="canGoToNextTurn">次のターンへ</button>
+      <button :disabled="canGoToNextTurn" @click="goToNextTurn">次のターンへ</button>
     </div>
   </div>
 </template>
@@ -30,6 +30,10 @@
 
     get canGoToNextTurn() {
       return this.normaInThisTurn > 0
+    }
+
+    public goToNextTurn() {
+      gameModule.goToNextTurn()
     }
   }
 </script>

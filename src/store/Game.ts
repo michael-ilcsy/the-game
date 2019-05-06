@@ -79,6 +79,23 @@ class Game extends VuexModule implements IGameState {
     this.SET_SELECTED_CARD(1000)
     this.SET_NORMA_IN_THIS_TURN(this.normaInThisTurn - 1)
   }
+
+  @Action
+  public goToNextTurn() {
+    let hands: number[] = this.handCardNumbers
+    const drawCardNumber = 8 - hands.length
+
+    for (let i = 0; i < drawCardNumber; i++) {
+      let card = this.deck.drawCard()
+      if (!card) {
+        continue
+      }
+      hands.push(card.number)
+    }
+
+    this.SET_HAND_CARD_NUMBERS(hands)
+    this.SET_NORMA_IN_THIS_TURN(2)
+  }
 }
 
 export const gameModule = getModule(Game)
