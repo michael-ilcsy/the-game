@@ -21,7 +21,7 @@
   @Component({})
   export default class InfoField extends Vue {
     get deckRemainingCount() {
-      return gameModule.deck.remainingCount
+      return gameModule.deckRemainingCount
     }
 
     get normaInThisTurn() {

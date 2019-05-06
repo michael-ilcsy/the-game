@@ -30,6 +30,10 @@ class Game extends VuexModule implements IGameState {
     new UpperField(new Card(22))
   ]
 
+  get deckRemainingCount() {
+    return this.deck.remainingCount
+  }
+
   @Mutation
   public SET_HAND_CARD_NUMBERS(numbers: number[]) {
     this.handCardNumbers = numbers.sort((a, b) => a - b)
@@ -53,7 +57,7 @@ class Game extends VuexModule implements IGameState {
   @Action
   public initialize() {
     this.SET_DECK(new Deck())
-    
+
     let hands: number[] = []
     for (let i = 0; i < 8; i++) {
       let card = this.deck.drawCard()
