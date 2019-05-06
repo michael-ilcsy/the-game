@@ -6,7 +6,7 @@
     </div>
     <div class="info-item -blue">
       このターン<br>
-      {{ normaInThisTurn }} 枚以上
+      あと {{ normaInThisTurn }} 枚以上
     </div>
     <div class="info-item">
       <button :disabled="canGoToNextTurn">次のターンへ</button>

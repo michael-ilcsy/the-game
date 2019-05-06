@@ -52,6 +52,9 @@ class Game extends VuexModule implements IGameState {
   @Mutation
   public SET_NORMA_IN_THIS_TURN(norma: number) {
     this.normaInThisTurn = norma
+    if (this.normaInThisTurn < 0) {
+      this.normaInThisTurn = 0
+    }
   }
 
   @Action
@@ -74,6 +77,7 @@ class Game extends VuexModule implements IGameState {
   public putCard() {
     this.SET_HAND_CARD_NUMBERS(this.handCardNumbers.filter(val => val != this.selectedCard.number))
     this.SET_SELECTED_CARD(1000)
+    this.SET_NORMA_IN_THIS_TURN(this.normaInThisTurn - 1)
   }
 }
 
