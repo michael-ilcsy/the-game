@@ -36,6 +36,7 @@
       }
 
       this.field.putCard(this.selectedCard)
+      gameModule.putCard()
     }
   }
 </script>

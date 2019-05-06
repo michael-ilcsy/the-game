@@ -27,7 +27,7 @@ class Game extends VuexModule implements IGameState {
   ]
   upperFields: UpperField[] = [
     new UpperField(new Card(1)),
-    new UpperField(new Card(22))
+    new UpperField(new Card(1))
   ]
 
   get deckRemainingCount() {
@@ -68,6 +68,12 @@ class Game extends VuexModule implements IGameState {
     }
 
     this.SET_HAND_CARD_NUMBERS(hands)
+  }
+
+  @Action
+  public putCard() {
+    this.SET_HAND_CARD_NUMBERS(this.handCardNumbers.filter(val => val != this.selectedCard.number))
+    this.SET_SELECTED_CARD(1000)
   }
 }
 
